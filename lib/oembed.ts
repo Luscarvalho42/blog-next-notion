@@ -13,13 +13,10 @@ export const oembed = async ({
   maxHeight?: number
   dark?: boolean
 }) => {
-  // TODO: handle pages with no pageId via domain
   const pageId = parsePageId(url)
 
   let title = config.name
   let authorName = config.author
-
-  // TODO: handle errors gracefully
 
   const page = await getPage(pageId)
   const pageTitle = getPageTitle(page)
@@ -52,10 +49,6 @@ export const oembed = async ({
     title,
     author_name: authorName,
     url,
-    // TODO
-    // thumbnail_url: 'https://repl.it/public/images/replit-logo-800x600.png',
-    // thumbnail_width: 800,
-    // thumbnail_height: 600,
     width,
     height,
     html: `<iframe src="${embedUrl}" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts" width="${width}" height="${height}" frameborder="0"></iframe>`

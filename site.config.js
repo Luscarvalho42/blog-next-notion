@@ -1,15 +1,15 @@
 module.exports = {
   // where it all starts -- the site's root Notion page (required)
-  rootNotionPageId: '10a3fc32e0a84e28bfd69504aded5ead',
+  rootNotionPageId: '357f3b43decb497289f1060e1be595cb',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Islem Maboud Portfolio',
-  domain: 'islemmaboud.dev',
-  author: 'Islem Maboud',
+  name: 'Lucas de Carvalho Felizardo',
+  domain: 'lusca.dev',
+  author: 'Lucas Felizardo',
 
   // open graph metadata (optional)
   description: 'Elegant Portfolio',

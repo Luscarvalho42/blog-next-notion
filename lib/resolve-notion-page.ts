@@ -17,8 +17,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     pageId = parsePageId(rawPageId)
 
     if (!pageId) {
-      // check if the site configuration provides an override of a fallback for
-      // the page's URI
       const override =
         pageUrlOverrides[rawPageId] || pageUrlAdditions[rawPageId]
 
@@ -36,18 +34,11 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
       site = resources[0]
       recordMap = resources[1]
     } else {
-      // handle mapping of user-friendly canonical page paths to Notion page IDs
-      // e.g., /developer-x-entrepreneur versus /71201624b204481f862630ea25ce62fe
       const siteMaps = await getSiteMaps()
       const siteMap = siteMaps[0]
       pageId = siteMap?.canonicalPageMap[rawPageId]
 
       if (pageId) {
-        // TODO: we're not re-using the site from siteMaps because it is
-        // cached aggressively
-        // site = await getSiteForDomain(domain)
-        // recordMap = siteMap.pageMap[pageId]
-
         const resources = await Promise.all([
           getSiteForDomain(domain),
           getPage(pageId)
@@ -68,7 +59,6 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
     site = await getSiteForDomain(domain)
     pageId = site.rootNotionPageId
 
-    console.log(site)
     recordMap = await getPage(pageId)
   }
 

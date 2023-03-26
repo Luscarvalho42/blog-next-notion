@@ -36,9 +36,7 @@ export async function getPreviewImages(
         url: images[index],
         id: model.id
       }
-      console.log('createPreviewImage server-side', json)
 
-      // TODO: should we fire and forget here to speed up builds?
       return got
         .post(api.createPreviewImage, { json })
         .json() as Promise<types.PreviewImage>

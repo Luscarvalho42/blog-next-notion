@@ -4,7 +4,6 @@ if (!rawSiteConfig) {
   throw new Error(`Config error: invalid site.config.js`)
 }
 
-// TODO: allow environment variables to override site.config.js
 let siteConfigOverrides
 
 try {

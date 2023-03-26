@@ -14,13 +14,10 @@ export const mapNotionImageUrl = (url: string, block: Block) => {
     return url
   }
 
-  // const origUrl = url
-
   if (url.startsWith('/images')) {
     url = `https://www.notion.so${url}`
   }
 
-  // more recent versions of notion don't proxy unsplash images
   if (!url.startsWith('https://images.unsplash.com')) {
     url = `https://www.notion.so${
       url.startsWith('/image') ? url : `/image/${encodeURIComponent(url)}`
@@ -38,7 +35,6 @@ export const mapNotionImageUrl = (url: string, block: Block) => {
     url = notionImageUrlV2.toString()
   }
 
-  // console.log({ url, origUrl })
   return mapImageUrl(url)
 }
 
@@ -48,7 +44,6 @@ export const mapImageUrl = (imageUrl: string) => {
   }
 
   if (imageCDNHost) {
-    // Our proxy uses Cloudflare's global CDN to cache these image assets
     return `${imageCDNHost}/${encodeURIComponent(imageUrl)}`
   } else {
     return imageUrl

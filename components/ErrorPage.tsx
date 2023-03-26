@@ -15,14 +15,14 @@ export const ErrorPage: React.FC<{ statusCode: number }> = ({ statusCode }) => {
         <meta property='og:site_name' content={title} />
         <meta property='og:title' content={title} />
 
-        <title>{title}</title>
+        <title>Lucas Felizardo • {title}</title>
       </Head>
 
       <div className={styles.container}>
         <main className={styles.main}>
-          <h1>Error Loading Page</h1>
+          <h1>Desculpe! Ocorreu um erro ao carrega esta página.</h1>
 
-          {statusCode && <p>Error code: {statusCode}</p>}
+          {statusCode && <p>Erro: {statusCode}</p>}
 
           <img src='/error.png' alt='Error' className={styles.errorImage} />
         </main>
